@@ -1,4 +1,5 @@
 import {Inject, Injectable, OpaqueToken} from 'angular2/src/core/di';
+import {AnimationBuilder} from 'angular2/src/animate/animation_builder';
 import {
   isPresent,
   isBlank,
@@ -44,7 +45,7 @@ export class DomRenderer extends Renderer {
   _document;
 
   constructor(private _eventManager: EventManager,
-              private _domSharedStylesHost: DomSharedStylesHost,
+              private _domSharedStylesHost: DomSharedStylesHost, private _animate: AnimationBuilder,
               private _templateCloner: TemplateCloner, @Inject(DOCUMENT) document) {
     super();
     this._document = document;
@@ -96,7 +97,51 @@ export class DomRenderer extends Renderer {
     var previousFragmentNodes = resolveInternalDomFragment(previousFragmentRef);
     if (previousFragmentNodes.length > 0) {
       var sibling = previousFragmentNodes[previousFragmentNodes.length - 1];
-      moveNodesAfterSibling(sibling, resolveInternalDomFragment(fragmentRef));
+      let nodes = resolveInternalDomFragment(fragmentRef);
+      moveNodesAfterSibling(sibling, nodes);
+      this.animateNodesEnter(nodes);
+    }
+  }
+
+  /**
+   * Iterates through all nodes being added to the DOM and animates them if necessary
+   * @param nodes
+   */
+  animateNodesEnter(nodes: Node[]) {
+    for (let i = 0; i < nodes.length; i++) this.animateNodeEnter(nodes[i]);
+  }
+
+  /**
+   * Performs animations if necessary
+   * @param node
+   */
+  animateNodeEnter(node: Node) {
+    if (DOM.isElementNode(node) && DOM.hasClass(node, 'ng-animate')) {
+      DOM.addClass(node, 'ng-enter');
+      this._animate.css()
+        .addAnimationClass('ng-enter-active')
+        .start(<HTMLElement>node)
+        .onComplete(() => { DOM.removeClass(node, 'ng-enter'); });
+    }
+  }
+
+  /**
+   * If animations are necessary, performs animations then removes the element; otherwise, it just
+   * removes the element.
+   * @param node
+   */
+  animateNodeLeave(node: Node) {
+    if (DOM.isElementNode(node) && DOM.hasClass(node, 'ng-animate')) {
+      DOM.addClass(node, 'ng-leave');
+      this._animate.css()
+          .addAnimationClass('ng-leave-active')
+          .start(<HTMLElement>node)
+          .onComplete(() => {
+            DOM.removeClass(node, 'ng-leave');
+            DOM.remove(node);
+          });
+    } else {
+      DOM.remove(node);
     }
   }
 
@@ -106,7 +151,9 @@ export class DomRenderer extends Renderer {
     }
     var parentView = resolveInternalDomView(elementRef.renderView);
     var element = parentView.boundElements[elementRef.renderBoundElementIndex];
-    moveNodesAfterSibling(element, resolveInternalDomFragment(fragmentRef));
+    var nodes = resolveInternalDomFragment(fragmentRef);
+    moveNodesAfterSibling(element, nodes);
+    this.animateNodesEnter(nodes);
   }
 
   _detachFragmentScope = wtfCreateScope('DomRenderer#detachFragment()');
@@ -114,7 +161,7 @@ export class DomRenderer extends Renderer {
     var s = this._detachFragmentScope();
     var fragmentNodes = resolveInternalDomFragment(fragmentRef);
     for (var i = 0; i < fragmentNodes.length; i++) {
-      DOM.remove(fragmentNodes[i]);
+      this.animateNodeLeave(fragmentNodes[i]);
     }
     wtfLeave(s);
   }
