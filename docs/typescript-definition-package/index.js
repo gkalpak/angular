@@ -50,7 +50,7 @@ module.exports = new Package('angular-v2-docs', [jsdocPackage, nunjucksPackage, 
   createTypeDefinitionFile.typeDefinitions = [
     {
       id: 'angular2/angular2',
-      references: ['../es6-promise/es6-promise.d.ts', '../rx/rx.d.ts'],
+      references: ['../es6-promise/es6-promise.d.ts'],
       modules: {
         'angular2/angular2': {namespace: 'ng', id: 'angular2/angular2'}
         /* TODO(jeffbcross): re-implement with @jteplitz as part of #3926,

@@ -993,14 +993,10 @@ gulp.task('!build.js.cjs', function() {
 
 var bundleConfig = {
   paths: {
-    "*": "dist/js/prod/es6/*.js",
-    "rx": "node_modules/rx/dist/rx.js"
+    "*": "dist/js/prod/es5/*.js",
+    "@reactivex/rxjs": "dist/js/prod/es5/@reactivex/Rx.js"
   },
   meta: {
-    // auto-detection fails to detect properly here - https://github.com/systemjs/builder/issues/123
-    'rx': {
-      format: 'cjs'
-    },
     'angular2/src/router/route_definition': {
       format: 'es6'
     }
@@ -1056,7 +1052,8 @@ gulp.task('!bundle.js.dev', ['build.js.dev'], function() {
   var devBundleConfig = merge(true, bundleConfig);
   devBundleConfig.paths =
       merge(true, devBundleConfig.paths, {
-       "*": "dist/js/dev/es6/*.js"
+       "*": "dist/js/dev/es5/*.js",
+       "@reactivex/rxjs": "dist/js/dev/es5/@reactivex/Rx.js"
       });
   return bundler.bundle(
       devBundleConfig,
@@ -1145,7 +1142,7 @@ gulp.task('!bundle.js.prod.deps', ['!bundle.js.prod'], function() {
       'angular2.js'
     ),
     bundler.modify(
-        ['node_modules/reflect-metadata/Reflect.js', 'node_modules/rx/dist/rx.lite.js', 'dist/build/http.js'],
+        ['node_modules/reflect-metadata/Reflect.js', 'dist/build/http.js'],
         'http.js'
     )).pipe(gulp.dest('dist/js/bundle'));
 });
@@ -1157,7 +1154,7 @@ gulp.task('!bundle.js.min.deps', ['!bundle.js.min'], function() {
       'angular2.min.js'
     ),
     bundler.modify(
-        ['node_modules/reflect-metadata/Reflect.js', 'node_modules/rx/dist/rx.lite.js','dist/build/http.min.js'],
+        ['node_modules/reflect-metadata/Reflect.js', 'dist/build/http.min.js'],
         'http.min.js'
     ))
     .pipe(uglify())
@@ -1176,9 +1173,9 @@ var JS_DEV_DEPS = [
 
 // Splice in RX license if rx is in the bundle.
 function insertRXLicense(source) {
-  var n = source.indexOf('System.register("rx"');
+  var n = source.indexOf('System.register("@reactivex/rxjs"');
   if (n >= 0) {
-    var rxLicense = licenseWrap('node_modules/rx/license.txt');
+    var rxLicense = licenseWrap('node_modules/@reactivex/rxjs/LICENSE.txt');
     return source.slice(0, n) + rxLicense + source.slice(n);
   } else {
     return source;
