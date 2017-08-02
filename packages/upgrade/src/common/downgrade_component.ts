@@ -50,6 +50,11 @@ let downgradeCount = 0;
  * The parameter contains information about the Component that is being downgraded:
  *
  * * `component: Type<any>`: The type of the Component that will be downgraded
+ * * `propagateDigest?: boolean`: Whether to perform {@link ChangeDetectorRef#detectChanges
+ *   change detection} on the component on every
+ *   [$digest](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$digest). If set to `false`,
+ *   change detction will still be performed when any of the component's inputs changes.
+ *   (Default: true)
  *
  * @experimental
  */
