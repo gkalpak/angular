@@ -33,14 +33,14 @@ let downgradeCount = 0;
  * Let's assume that you have an Angular component called `ng2Heroes` that needs
  * to be made available in AngularJS templates.
  *
- * {@example upgrade/static/ts/module.ts region="ng2-heroes"}
+ * {@example upgrade/static/ts/classic/module.ts region="ng2-heroes"}
  *
  * We must create an AngularJS [directive](https://docs.angularjs.org/guide/directive)
  * that will make this Angular component available inside AngularJS templates.
  * The `downgradeComponent()` function returns a factory function that we
  * can use to define the AngularJS directive that wraps the "downgraded" component.
  *
- * {@example upgrade/static/ts/module.ts region="ng2-heroes-wrapper"}
+ * {@example upgrade/static/ts/classic/module.ts region="ng2-heroes-wrapper"}
  *
  * @description
  *
