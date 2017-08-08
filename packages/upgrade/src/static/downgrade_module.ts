@@ -18,8 +18,6 @@ import {NgAdapterInjector} from './util';
 
 
 /**
- * <!-- TODO(gkalpak): Add link to guide. -->
- *
  * @whatItDoes
  *
  * *Part of the {@link upgrade/static upgrade/static} library for hybrid upgrade apps that support
@@ -31,6 +29,8 @@ import {NgAdapterInjector} from './util';
  * @howToUse
  *
  * {@example upgrade/static/ts/lite/module.ts region="basic-how-to"}
+ *
+ * For more details on how to use `downgradeModule()` see [this upgrade guide](guide/upgrade-lazy).
  *
  * @description
  *
