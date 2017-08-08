@@ -356,6 +356,11 @@
               "tooltip": "Incrementally upgrade an AngularJS application to Angular."
             },
             {
+              "url": "guide/upgrade-lazy",
+              "title": "Lazy-loading Angular into AngularJS",
+              "tooltip": "Upgrade from AngularJS to Angular in a more flexible way."
+            },
+            {
               "url": "guide/ajs-quick-reference",
               "title": "Upgrade Cheatsheet",
               "tooltip": "Learn how AngularJS concepts and techniques map to Angular."
