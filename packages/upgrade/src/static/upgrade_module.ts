@@ -125,7 +125,7 @@ import {NgAdapterInjector} from './util';
  *
  * Let's say you have an AngularJS service:
  *
- * {@example upgrade/static/ts/classic/module.ts region="ng1-title-case-service"}
+ * {@example upgrade/static/ts/classic/module.ts region="ng1-text-formatter-service"}
  *
  * Then you should define an Angular provider to be included in your {@link NgModule} `providers`
  * property.
