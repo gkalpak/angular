@@ -1,50 +1,48 @@
-# Authors Style Guide
+# Author's Style Guide
 
-This page presents design and layout guidelines for Angular documentation pages.  These guidelines should be followed by all guide page authors. Deviations must be approved by the documentation editor.
+This page presents design and layout guidelines for Angular documentation pages. These guidelines should be followed by all guide page authors. Deviations must be approved by the documentation editor.
 
-Most guide pages should have [accompanying sample code](#from-code-samples) with
-[special markup](#source-code-markup) for the code snippets on the page.
-Code samples should adhere to the
-[style guide for Angular applications](guide/styleguide "Application Code Style Guide")
+Most guide pages should have [accompanying sample code](#from-code-samples) with 
+[special markup](#source-code-markup) for the code snippets on the page. 
+Code samples should adhere to the 
+[style guide for Angular applications](guide/styleguide "Application Code Style Guide") 
 because readers expect consistency.
 
-For clarity and precision, every guideline on _this_ page is illustrated with a working example,
-followed by the page markup for that example ... as shown here.
+For clarity and precision, every guideline on _this_ page is illustrated with a working example, 
+followed by the page markup for that example, as shown here:
 
 ```html
-  followed by the page markup for that example ... as shown here.
+  followed by the page markup for that example, as shown here.
 ```
 
 ## Doc generation and tooling
 
 To make changes to the documentation pages and sample code, clone the [Angular github repository](https://github.com/angular/angular "Angular repo") and go to the `aio/` folder.
 
-The [aio/README.md](https://github.com/angular/angular/blob/master/aio/README.md "AIO ReadMe") explains how to install and use the tools to edit and test your changes.
+The [aio/README.md](https://github.com/angular/angular/blob/master/aio/README.md "AIO ReadMe") explains how to install and use the tools to edit and test your changes. 
 
 Here are a few essential commands for guide page authors.
 
-1. `yarn setup` &mdash; installs packages; builds docs, plunkers, and zips.
+1. `yarn setup`&mdash;installs packages; builds docs, plunkers, and zips.
 
-1. `yarn docs-watch -- --watch-only` &mdash; watches for saved content changes and refreshes the browser. The (optional) `--watch-only` flag skips the initial docs rebuild.
+1. `yarn docs-watch -- --watch-only`&mdash;watches for saved content changes and refreshes the browser. The optional `--watch-only` flag skips the initial docs rebuild.
 
-1. `yarn start`  &mdash;  starts the doc viewer application so you can see your local changes in the browser.
+1. `yarn start`&mdash;starts the doc viewer application so you can see your local changes in the browser.
 
-1.  http://localhost:4200/  &mdash;  browse to the app running locally.
-
-You can combine `yarn docs-watch` and `yarn start` into one command with `yarn serve-and-sync`.
+1. http://localhost:4200/ &mdash;browse to the app running locally.
 
 ## Guide pages
 
- All but a few guide pages are [markdown](https://daringfireball.net/projects/markdown/syntax "markdown") files with an `.md` extension.
+All but a few guide pages are [markdown](https://daringfireball.net/projects/markdown/syntax "markdown") files with an `.md` extension. 
 
-Every guide page file is stored in the `content/guide` directory. Although the [side navigation](#navigation) panel displays as a hierarchy, the directory is flat with no sub-folders.
+Every guide page file is stored in the `content/guide` directory. Although the [side navigation](#navigation) panel displays as a hierarchy, the directory is flat with no sub-folders. 
 The flat folder approach allows us to shuffle the apparent navigation structure without moving page files or redirecting old page URLs.
 
 The doc generation process consumes the markdown files in the `content/guide` directory and produces JSON files in the `src/generated/docs/guide` directory, which is also flat. Those JSON files contain a combination of document metadata and HTML content.
 
-The reader requests a page by its Page URL. The doc viewer fetches the corresponding JSON file, interprets it, and renders it as fully-formed HTML page.
+The reader requests a page by its page URL. The doc viewer fetches the corresponding JSON file, interprets it, and renders it as fully-formed HTML page.
 
-Page URLs mirror the `content` file structure. The URL for the page of a guide is in the form `guide/{page-name}`. The page for _this_ "Authors Style Guide" is located at `content/guide/docs-style-guide.md` and its URL is `guide/docs-style-guide`.
+Page URLs mirror the `content` file structure. The URL for the page of a guide is in the form `guide/{page-name}`. The page for _this_ "Author's Style Guide" is located at `content/guide/docs-style-guide.md` and its URL is `guide/docs-style-guide`.
 
 
 <div class="l-sub-section">
@@ -54,7 +52,7 @@ _Tutorial_ pages are exactly like guide pages. The only difference is that they 
 _API_ pages are generated from Angular source code into the `src/generated/docs/api` directory.
 The doc viewer translates URLs that begin `api/` into requests for document JSON files in that directory. This style guide does not discuss creation or maintenance of API pages.
 
-_Marketing_ pages are similar to guide pages. They're located in the `content/marketing` directory. While they can be markdown files, they may be static HTML pages or dynamic HTML pages that render with JSON data.
+_Marketing_ pages are similar to guide pages. They're located in the `content/marketing` directory. While they can be markdown files, they may be static HTML pages or dynamic HTML pages that render with JSON data. 
 
 Only a few people are authorized to write marketing pages. This style guide does not discuss creation or maintenance of marketing pages.
 
@@ -72,14 +70,14 @@ Standard markdown processors don't allow you to put markdown _within_ HTML tags.
 
 <div class="alert is-critical">
 
-**Always** follow every opening and closing HTML tag with _a blank line_.
+**Always** follow every opening and closing HTML tag with _a blank line_. 
 
 </div>
 
 ```html
 <div class="alert is-critical">
 
-  **Always** follow every opening and closing HTML tag with _a blank line_.
+  **Always** follow every opening and closing HTML tag with _a blank line_. 
 
 </div>
 ```
@@ -113,7 +111,7 @@ Title text should be in "Title Case", which means that you use capital letters t
 
 ## Sections
 
-A typical document is divided into sections.
+A typical document is divided into sections. 
 
 All section heading text should be in "Sentence case", which means the first word is capitalized and all other words are lower case.
 
@@ -124,7 +122,7 @@ Main section heading
 </h2>
 There are usually one or more main sections that may be further divided into secondary sections.
 
-Begin a main section heading with the markdown `##` characters. Alternatively, you can write the equivalent `<h2>` HTML tag.
+Begin a main section heading with the markdown `##` characters. Alternatively, you can write the equivalent `<h2>` HTML tag.  
 
 The main section heading should be followed by a blank line and then the content for that heading.
 
@@ -152,9 +150,9 @@ The secondary heading should be followed by a blank line and then the content fo
 
 #### Additional section headings
 
-Try to minimize the heading depth, preferably only two. But more headings, such as this one, are permitted if they make sense.
+Try to minimize the heading depth, preferably to only two. But more headings, such as this one, are permitted if they make sense.
 
-**N.B.**:  The [Table-of-contents](#table-of-contents) generator only considers main (`<h2>`) and secondary (`<h3>`) headings.
+**Note**:  The [table-of-contents](#table-of-contents) generator only considers main (`<h2>`) and secondary (`<h3>`) headings.
 
 ```html
   #### Additional section headings
@@ -166,7 +164,7 @@ Try to minimize the heading depth, preferably only two. But more headings, such 
 
 Subsections typically present extra detail and references to other pages.
 
-Use subsections for commentary that _enriches_ the reader's understanding of the text that precedes it.
+Use subsections for commentary that _enriches_ the reader's understanding of the text that precedes it. 
 
 A subsection _must not_ contain anything _essential_ to that understanding. Don't put a critical instruction or a tutorial step in a subsection.
 
@@ -194,7 +192,7 @@ Note that at least one blank line must follow the opening `<div>`. A blank line 
 
 Most pages display a table of contents (TOC). The TOC appears in the right panel when the viewport is wide. When narrow, the TOC appears in an expandable/collapsible region near the top of the page.
 
-You should not create your own TOC by hand. The TOC is generated automatically from the page's main and secondary section headers.
+You should not create your own TOC by hand. The TOC is generated automatically from the page's main and secondary section headers. 
 
 To exclude a heading from the TOC, create the heading as an `<h2>` or `<h3>` element with a class called 'no-toc'. You can't do this with markdown.
 
@@ -216,7 +214,7 @@ A guide without a TOC
 
 The navigation links at the top, left, and bottom of the screen are generated from the JSON configuration file, `content/navigation.json`.
 
-The authority to change the `navigation.json` file is limited to a few core team members.
+The authority to change the `navigation.json` file is limited to a few core team members. 
 But for a new guide page, you should suggest a navigation title and position in the left-side navigation panel called the "side nav".
 
 Look for the `SideNav` node in `navigation.json`. The `SideNav` node is an array of navigation nodes. Each node is either an _item_ node for a single document or a _header_ node with child nodes.
@@ -245,15 +243,15 @@ Add an _item_ node for your guide page as a child of the appropriate _header_ no
 
 A navigation node has the following properties:
 
-* `url`- the URL of the guide page (_item node only_).
+* `url`&mdash;the URL of the guide page (_item node only_).
 
-* `title`- the text displayed in the side nav.
+* `title`&mdash;the text displayed in the side nav.
 
-* `tooltip` - text that appears when the reader hovers over the navigation link.
+* `tooltip`&mdash;text that appears when the reader hovers over the navigation link.
 
-* `children` - an array of child nodes (_header node only_).
+* `children`&mdash;an array of child nodes (_header node only_).
 
-* `hidden` - defined and set true if this is a guide page that should _not_ be displayed in the navigation panel. Rarely needed, it is a way to hide the page from navigation while making it available to readers who should know about it. _This_ "Authors Style Guide" is a hidden page.
+* `hidden`&mdash;defined and set true if this is a guide page that should _not_ be displayed in the navigation panel. Rarely needed, it is a way to hide the page from navigation while making it available to readers who should know about it. _This_ "Author's Style Guide" is a hidden page.
 
 
 <div class="alert is-critical">
@@ -282,7 +280,7 @@ Whatever the source, the doc viewer renders them as "code snippets", either indi
 ### Code example
 
 You can display a simple, inline code snippet with the markdown backtick syntax.
-We generally prefer to display a code snippet with the Angular documentation _code-example_ component
+Generally, display a code snippet with the Angular documentation _code-example_ component
 represented by the `<code-example>` tag.
 
 <h3 class="no-toc">Inline code-snippets</h3>
@@ -304,7 +302,7 @@ For terminal input and output, put the content between `<code-example>` tags, se
 
 Inline, hand-coded snippets like this one are _not_ testable and, therefore, are intrinsically unreliable.
 This example belongs to the small set of pre-approved, inline snippets that includes
-user input in a command shell or the _output_ of some process.
+user input in a command shell or the _output_ of some process. 
 
 **Do not write inline code snippets** unless you have a good reason and the editor's permission to do so.
 In all other cases, code snippets should be generated automatically from tested code samples.
@@ -315,7 +313,7 @@ In all other cases, code snippets should be generated automatically from tested 
 
 One of the documentation design goals is that guide page code snippets should be examples of real, working code.
 
-We meet this goal by displaying code snippets that are derived directly from standalone code samples, written specifically for these guide pages.
+Meet this goal by displaying code snippets that are derived directly from standalone code samples, written specifically for these guide pages.
 
 The author of a guide page is responsible for the code sample that supports that page.
 The author must also write end-to-end tests for the sample.
@@ -343,42 +341,42 @@ The following _code-example_ displays the sample's `app.module.ts`.
 Here's the brief markup that produced that lengthy snippet:
 
 ```html
-<code-example
-  path="docs-style-guide/src/app/app.module.ts"
+<code-example 
+  path="docs-style-guide/src/app/app.module.ts" 
   title="src/app/app.module.ts">
 </code-example>
 ```
 
 You identified the snippet's source file by setting the `path` attribute to sample folder's location _within_ `content/examples`.
-In this example, that path is  `docs-style-guide/src/app/app.module.ts`.
+In this example, that path is  `docs-style-guide/src/app/app.module.ts`.  
 
 You added a header to tell the reader where to find the file by setting the `title` attribute.
 Following convention, you set the `title` attribute to the file's location within the sample's root folder.
 
 <div class="l-sub-section">
 
-Unless otherwise noted, all code snippets in this page are derived from sample source code
+Unless otherwise noted, all code snippets in this page are derived from sample source code 
 located in the `content/examples/docs-style-guide` directory.
 
 </div>
 
-#### Code-example attributes
+#### Code-example attributes 
 
 You control the _code-example_ output by setting one or more of its attributes:
 
-* `path`- the path to the file in the `content/examples` folder.
+* `path`&mdash;the path to the file in the `content/examples` folder.
 
-* `title`- the header of the code listing.
+* `title`&mdash;the header of the code listing.
 
-* `region`- displays the source file fragment with that region name; regions are identified by _docregion_ markup in the source file, as explained [below](#region "Displaying a code fragment").
+* `region`&mdash;displays the source file fragment with that region name; regions are identified by _docregion_ markup in the source file, as explained [below](#region "Displaying a code fragment").
 
-* `linenums`- value may be `true`, `false`, or a `number`. When not specified, line numbers are automatically displayed when there are greater than 10 lines of code. The rarely used `number` option starts line numbering at the given value. `linenums=4` sets the starting line number to 4.
+* `linenums`&mdash;value may be `true`, `false`, or a `number`. When not specified, line numbers are automatically displayed when there are greater than 10 lines of code. The rarely used `number` option starts line numbering at the given value. `linenums=4` sets the starting line number to 4.
 
-* `class`- code snippets can be styled with the CSS classes `no-box`, `code-shell`, and `avoid`.
+* `class`&mdash;code snippets can be styled with the CSS classes `no-box`, `code-shell`, and `avoid`.
 
-* `hideCopy`- hides the copy button
+* `hideCopy`&mdash;hides the copy button.
 
-* `language`- the source code language such as `javascript`, `html`, `css`, `typescript`, `json`, or `sh`. This attribute only works for inline examples.
+* `language`&mdash;the source code language such as `javascript`, `html`, `css`, `typescript`, `json`, or `sh`. This attribute only works for inline examples.
 
 {@a region}
 
@@ -386,18 +384,18 @@ You control the _code-example_ output by setting one or more of its attributes:
 
 Often you want to focus on a fragment of code within a sample code file. In this example, you focus on the `AppModule` class and its `NgModule` metadata.
 
-<code-example
-  path="docs-style-guide/src/app/app.module.ts"
+<code-example 
+  path="docs-style-guide/src/app/app.module.ts" 
   region="class">
 </code-example>
 
 First you surround that fragment in the source file with a named _docregion_ as described [below](#source-code-markup).
-Then you reference that _docregion_ in the `region` attribute of the `<code-example>` like this
+Then you reference that _docregion_ in the `region` attribute of the `<code-example>` like this:
 
 
 ```html
-<code-example
-  path="docs-style-guide/src/app/app.module.ts"
+<code-example 
+  path="docs-style-guide/src/app/app.module.ts" 
   region="class">
 </code-example>
 ```
@@ -413,22 +411,21 @@ There's no need to repeat the header.
 
 #### Example of bad code
 
-Sometimes you want to display an example of bad code or bad design.
-
-You should be careful. Readers don't always read carefully and are likely to copy and paste your example of bad code in their own applications. So don't display bad code often.
+Sometimes you want to display an example of bad code or bad design, however, 
+readers don't always read carefully and are likely to copy and paste your example of bad code in their own applications. So don't display bad code often. 
 
 When you do, set the `class` to `avoid`. The code snippet will be framed in bright red to grab the reader's attention.
 
-Here's the markup for an "avoid" example in the
+Here's the markup for an "avoid" example in the 
 [_Angular Style Guide_](guide/styleguide#style-05-03 "Style 05-03: components as elements").
 
 ```html
-<code-example
-  path="styleguide/src/05-03/app/heroes/shared/hero-button/hero-button.component.avoid.ts"
-  region="example"
+<code-example 
+  path="styleguide/src/05-03/app/heroes/shared/hero-button/hero-button.component.avoid.ts" 
+  region="example" 
   title="app/heroes/hero-button/hero-button.component.ts">
 </code-example>
-```
+``` 
 
 <code-example path="styleguide/src/05-03/app/heroes/shared/hero-button/hero-button.component.avoid.ts" region="example" title="app/heroes/hero-button/hero-button.component.ts">
 </code-example>
@@ -436,38 +433,39 @@ Here's the markup for an "avoid" example in the
 {@a code-tabs}
 ### Code Tabs
 
-Code tabs display code much like _code examples_ do.  The added advantage is that they can display mutiple code samples within a tabbed interface.  Each tab is displayed using _code pane_.
+Code tabs display code much like code examples do. The added advantage is that they can display mutiple code samples within a tabbed interface. Each tab is displayed using a code pane.
 
 #### Code-tabs attributes
 
-* `linenums`: The value can be `true`, `false` or a number indicating the starting line number. If not specified, line numbers are enabled only when code for a tab pane has greater than 10 lines of code.
+* `linenums`&mdash;the value can be `true`, `false`, or a number indicating the starting line number. 
+If you don't specify a value, line numbers are enabled only when code for a tab pane has greater than 10 lines of code.
 
 #### Code-pane attributes
 
-* `path` - a file in the content/examples folder
-* `title` - seen in the header of a tab
-* `linenums` - overrides the `linenums` property at the `code-tabs` level for this particular pane. The value can be `true`, `false` or a number indicating the starting line number. If not specified, line numbers are enabled only when the number of lines of code are greater than 10.
+* `path`&mdash;a file in the content/examples folder
+* `title`&mdash;seen in the header of a tab
+* `linenums`&mdash;overrides the `linenums` property at the `code-tabs` level for this particular pane. The value can be `true`, `false` or a number indicating the starting line number. If not specified, line numbers are enabled only when the number of lines of code are greater than 10.
 
 The next example displays multiple code tabs, each with its own title.
 It demonstrates control over display of line numbers at both the `<code-tabs>` and `<code-pane>` levels.
 
 <code-tabs linenums="false">
-  <code-pane
-    title="app.component.html"
+  <code-pane 
+    title="app.component.html" 
     path="docs-style-guide/src/app/app.component.html">
   </code-pane>
-  <code-pane
-    title="app.component.ts"
+  <code-pane 
+    title="app.component.ts" 
     path="docs-style-guide/src/app/app.component.ts"
     linenums="true">
   </code-pane>
-  <code-pane
-    title="app.component.css (heroes)"
-    path="docs-style-guide/src/app/app.component.css"
+  <code-pane 
+    title="app.component.css (heroes)" 
+    path="docs-style-guide/src/app/app.component.css"  
     region="heroes">
   </code-pane>
-  <code-pane
-    title="package.json (scripts)"
+  <code-pane 
+    title="package.json (scripts)" 
     path="docs-style-guide/package.1.json">
   </code-pane>
 </code-tabs>
@@ -479,22 +477,22 @@ The `linenums` attribute in the second pane restores line numbering for _itself 
 
 ```html
 <code-tabs linenums="false">
-  <code-pane
-    title="app.component.html"
+  <code-pane 
+    title="app.component.html" 
     path="docs-style-guide/src/app/app.component.html">
   </code-pane>
-  <code-pane
-    title="app.component.ts"
+  <code-pane 
+    title="app.component.ts" 
     path="docs-style-guide/src/app/app.component.ts"
     linenums="true">
   </code-pane>
-  <code-pane
-    title="app.component.css (heroes)"
-    path="docs-style-guide/src/app/app.component.css"
+  <code-pane 
+    title="app.component.css (heroes)" 
+    path="docs-style-guide/src/app/app.component.css"  
     region="heroes">
   </code-pane>
-  <code-pane
-    title="package.json (scripts)"
+  <code-pane 
+    title="package.json (scripts)" 
     path="docs-style-guide/package.1.json">
   </code-pane>
 </code-tabs>
@@ -512,7 +510,7 @@ The sample source code for this page, located in `context/examples/docs-style-gu
 
 </div>
 
-Code snippet markup is always in the form of a comment. Here's the default _docregion_ markup for a TypeScript or JavaScript file:
+Code snippet markup is always in the form of a comment. Here's the default `docregion` markup for a TypeScript or JavaScript file:
 
 ```
 // #docregion
@@ -546,19 +544,19 @@ See [below](#json-files) for details and workarounds.
 
 #### _#docregion_
 
-The _#docregion_ is the most important kind of code snippet markup.
+The `#docregion` is the most important kind of code snippet markup.
 
 The `<code-example>` and `<code-tabs>` components won't display a source code file unless it has a _#docregion_.
 
-The _#docregion_ comment begins a code snippet region.
-Every line of code _after_ that comment belongs in the region _until_ the code fragment processor encounters the end of the file or a closing _#enddocregion_.
+The `#docregion` comment begins a code snippet region.
+Every line of code _after_ that comment belongs in the region _until_ the code fragment processor encounters the end of the file or a closing `#enddocregion`.
 
 <div class="l-sub-section">
 
-The `src/main.ts` is a simple example of a file with a single _#docregion_ at the top of the file.
+The `src/main.ts` is a simple example of a file with a single `#docregion` at the top of the file.
 
-<code-example
-  path="docs-style-guide/src/main.ts"
+<code-example 
+  path="docs-style-guide/src/main.ts" 
   title="src/main.ts"></code-example>
 
 </div>
@@ -574,21 +572,21 @@ You distinguish among them by giving each fragment its own _#docregion name_ as 
 // #enddocregion region-name
 ```
 
-Remember to refer to this region by name in the `region` attribute of the `<code-example>` or `<code-pane>` as you did in an example above like this:
+Remember to refer to this region by name in the `region` attribute of the `<code-example>` or `<code-pane>` like this:
 
 ```html
-<code-example
-  path="docs-style-guide/src/app/app.module.ts"
+<code-example 
+  path="docs-style-guide/src/app/app.module.ts" 
   region="class"></code-example>
 ```
 
-The _#docregion_ with no name is the _default region_. Do _not_ set the `region` attribute when referring to the default _#docregion_.
+The `#docregion` with no name is the _default region_. Do _not_ set the `region` attribute when referring to the default `#docregion`.
 
 #### Nested _#docregions_
 
-You can nest _#docregions_ within _#docregions_
+You can nest #docregions within #docregions
 ```
-// #docregion
+// #docregion 
 ... some code ...
 // #docregion inner-region
 ... more code ...
@@ -629,15 +627,15 @@ export class AppComponent {
 // #enddocregion class, class-skeleton
 </code-example>
 
-Here's are the two corresponding code snippets displayed side-by-side.
+Here are the two corresponding code snippets displayed side-by-side.
 
 <code-tabs>
-  <code-pane
-    title="app.component.ts (class)"
+  <code-pane 
+    title="app.component.ts (class)" 
     path="docs-style-guide/src/app/app.component.ts"
     region="class">
   </code-pane>
-  <code-pane
+  <code-pane 
     title="app.component.ts (class-skeleton)"
     path="docs-style-guide/src/app/app.component.ts"
     region="class-skeleton">
@@ -646,11 +644,12 @@ Here's are the two corresponding code snippets displayed side-by-side.
 
 Some observations:
 
-* The `#docplaster` at the top is another bit of code snippet markup. It tells the processor how to join the fragments into a single snippet.
+* The `#docplaster` at the top is another bit of code snippet markup. It tells the processor how to join the fragments into a single snippet. 
 
-  In this example, we tell the processor to put the fragments together without anything in between - without any "plaster".  Most sample files define this _empty plaster_.
+  In this example, we tell the processor to put the fragments together without anything 
+  in between&mdash;without any "plaster". Most sample files define this _empty plaster_.
 
-  If we neglected to add, `#docplaster`, the processor would insert the _default_ plaster - an ellipsis comment - between the fragments. Try removing the `#docplaster` comment yourself to see the effect.
+  If we neglected to add `#docplaster` the processor would insert the _default_ plaster&mdash;an ellipsis comment&mdash;between the fragments. Try removing the `#docplaster` comment yourself to see the effect.
 
 * One `#docregion` comment mentions **_two_** region names as does an `#enddocregion` comment. This is a convenient way to start (or stop) multiple regions on the same code line. You could have put these comments on separate lines and many authors prefer to do so.
 
@@ -658,7 +657,7 @@ Some observations:
 
 Code snippet markup is not supported for JSON files because comments are forbidden in JSON files.
 
-You can display an entire JSON file by referring to it in the `src` attribute.
+You can display an entire JSON file by referring to it in the `src` attribute. 
 But you can't display JSON fragments because you can't add `#docregion` tags to the file.
 
 If the JSON file is too big, you could copy the nodes-of-interest into markdown backticks.
@@ -669,12 +668,12 @@ You can't test this partial file and you'll never use it in the application. But
 
 Here's an example that excerpts certain scripts from `package.json` into a partial file named `package.1.json`.
 
-<code-example
+<code-example 
   path="docs-style-guide/package.1.json"
   title="package.json (selected scripts)"></code-example>
 
 ```html
-<code-example
+<code-example 
   path="docs-style-guide/package.1.json"
   title="package.json (selected scripts)"></code-example>
 ```
@@ -698,7 +697,7 @@ You'll find many such files among the samples in the Angular documentation.
 
 Remember to exclude these files from plunkers by listing them in the `plnkr.json` as illustrated here.
 
-<code-example
+<code-example 
   path="docs-style-guide/plnkr.json"
   title="plnkr.json"></code-example>
 
@@ -707,7 +706,7 @@ Remember to exclude these files from plunkers by listing them in the `plnkr.json
 
 By adding `<live-example>` to the page you generate links that run sample code in the Plunker live coding environment and download that code to the reader's file system.
 
-Live examples (AKA "plunkers") are defined by one or more `plnkr.json` files in the root of a code sample folder. Each sample folder usually has a single unnamed definition file, the default `plnkr.json`.
+Live examples, or plunkers, are defined by one or more `plnkr.json` files in the root of a code sample folder. Each sample folder usually has a single unnamed definition file, the default `plnkr.json`. 
 
 <div class="l-sub-section">
 
@@ -717,27 +716,25 @@ The schema for a `plnkr.json` hasn't been documented yet but looking at the `pln
 
 </div>
 
-Adding `<live-example></live-example>` to the page generates the two default links.
+Adding `<live-example></live-example>` to the page generates the two default links:
 
 <live-example></live-example>
 
-1. a link to the plunker defined by the default `plnkr.json` file located in the code sample folder with the same name as the guide page.
+The live example portion links to the plunker defined by the default `plnkr.json` file located in the code sample folder with the same name as the guide page. This link opens the code sample 
+in a new browser tab in the "embedded plunker" style. You can change the appearance and behavior of the live example with attributes and classes.
 
-2. a link that downloads that sample.
-
-Clicking the first link opens the code sample in a new browser tab in the "embedded plunker" style.
-
-You can change the appearance and behavior of the live example with attributes and classes.
+The download example portion is a link that downloads that sample.
 
 
-<h3 class="no-toc">Custom label and tooltip</h3>
+
+<h3 class="no-toc">Custom label and tooltip</h3> 
 
 Give the live example anchor a custom label and tooltip by setting the `title` attribute.
 
-<live-example title="Live Example with title"></live-example>
+<live-example title="Live example with title"></live-example>
 
 ```html
-<live-example title="Live Example with title"></live-example>
+<live-example title="Live example with title"></live-example>
 ```
 
 You can achieve the same effect by putting the label between the `<live-example>` tags:
@@ -748,17 +745,17 @@ You can achieve the same effect by putting the label between the `<live-example>
 <live-example>Live example with content label</live-example>
 ```
 
-<h3 class="no-toc">Live example from another guide</h3>
+<h3 class="no-toc">Live example from another guide</h3> 
 
 To link to a plunker in a folder whose name is not the same as the current guide page, set the `name` attribute to the name of that folder.
 
-<live-example name="router">Live Example from the Router guide</live-example>
+<live-example name="router">Live example from the router guide</live-example>
 
 ```html
-<live-example name="router">Live Example from the Router guide</live-example>
+<live-example name="router">Live example from the router guide</live-example>
 ```
 
-<h3 class="no-toc">Live Example for named plunker</h3>
+<h3 class="no-toc">Live example for named plunker</h3> 
 
 To link to a plunker defined by a named `plnkr.json` file, set the `plnkr` attribute. The following example links to the plunker defined by `second.plnkr.json` in the current guide's directory.
 
@@ -768,7 +765,7 @@ To link to a plunker defined by a named `plnkr.json` file, set the `plnkr` attri
 <live-example plnkr="second"></live-example>
 ```
 
-<h3 class="no-toc">Live Example without download</h3>
+<h3 class="no-toc">Live example without download</h3> 
 
 To skip the download link, add the `noDownload` attribute.
 
@@ -778,7 +775,7 @@ To skip the download link, add the `noDownload` attribute.
 <live-example noDownload>Just the plunker</live-example>
 ```
 
-<h3 class="no-toc">Live Example with download-only</h3>
+<h3 class="no-toc">Live example with download-only</h3> 
 
 To skip the live plunker link and only link to the download, add the `downloadOnly` attribute.
 
@@ -788,9 +785,9 @@ To skip the live plunker link and only link to the download, add the `downloadOn
 <live-example downloadOnly>Download only</live-example>
 ```
 
-<h3 class="no-toc">Embedded live example</h3>
+<h3 class="no-toc">Embedded live example</h3> 
 
-By default, a live example link opens a plunker in a separate browser tab.
+By default, a live example link opens a plunker in a separate browser tab. 
 You can embed the plunker within the guide page itself by adding the `embedded` attribute.
 
 For performance reasons, the plunker does not start right away. The reader sees an image instead. Clicking the image starts the sometimes-slow process of launching the embedded plunker within an iframe on the page.
@@ -814,14 +811,14 @@ Every section header tag is also an anchor point. Another guide page could add a
 
 <div class="l-sub-section">
 
-See the ["Anchors"](guide/docs-style-guide#anchors "Style Guide - Anchors") section for details.
+See the [Anchors](guide/docs-style-guide#anchors "Style Guide - Anchors") section of the Style Guide for details.
 
 </div>
 
 ```html
 <div class="l-sub-section">
 
-See the ["Anchors"](guide/docs-style-guide#anchors "Style Guide - Anchors") section for details.
+See the [Anchors](guide/docs-style-guide#anchors "Style Guide - Anchors") section for details.
 
 </div>
 ```
@@ -836,17 +833,17 @@ When navigating within the page, you can omit the page URL when specifying the l
 
 #### Ugly, long section header anchors
 
-It is often a good idea to *lock-in* a good anchor name.
+It is often a good idea to use a good anchor name.
 
-Sometimes the section header text makes for an unattractive anchor. [This one](#ugly-long-section-header-anchors) is pretty bad.
+Sometimes the section header text makes for an unattractive anchor. [This one](#ugly-long-section-header-anchors) is pretty bad. 
 
 ```html
-[This one](#ugly-long-section-header-anchors) is pretty bad.
+[This one](#ugly-long-section-header-anchors) is pretty bad. 
 ```
 
 The greater danger is that **a future rewording of the header text would break** a link to this section.
 
-For these reasons, it is often wise to add a custom anchor explicitly, just above the heading or text to which it applies, using the special `{@a name}` syntax like this.
+For these reasons, it is often wise to add a custom anchor explicitly, just above the heading or text to which it applies, using the special`{@ name}` syntax like this.
 
 <code-example  language="html">
   &#123;@a ugly-anchors&#125;
@@ -907,11 +904,11 @@ A helpful, informational alert.
 ```
 
 Alerts are meant to grab the user's attention and should be used sparingly.
-They are not for casual asides or commentary. Use [subsections](#subsections "subsections") for commentary.
+They are not for casual asides or commentary. Use [subsections](#subsections "subsections") for commentary. 
 
 ## Callouts
 
-Callouts (like alerts) are meant to draw attention to important points. Use a callout when you want a riveting header and multi-line content.
+Callouts, like alerts, are meant to draw attention to important points. Use a callout when you want a riveting header and multi-line content.
 
 <div class="callout is-critical">
 <header>A critical point</header>
@@ -1144,17 +1141,17 @@ Here's the `src` attribute for the "flying hero" image belonging to this page.
 src="generated/images/guide/docs-style-guide/flying-hero.png"
 ```
 
-<h3 class="no-toc">Use the HTML <i>&lt;img&gt;</i> tag</h3>
+<h3 class="no-toc">Use the HTML `&lt;img&gt;` tag</h3>
 
 **Do not use the markdown image syntax, \!\[\.\.\.\]\(\.\.\.\).**
 
-Images should be specified in an `<img>` tag.
+Images should be specified in an `<img>` tag. 
 
-For accessibility, always set the `alt` attribute with a meaningful description of the image.
+For accessibility, always set the `alt` attribute with a meaningful description of the image. 
 
 You should nest the `<img>` tag within a `<figure>` tag, which styles the image within a drop-shadow frame. You'll need the editor's permission to skip the `<figure>` tag.
 
-Here's a conforming example
+Here's a conforming example:
 
 <figure>
   <img src="generated/images/guide/docs-style-guide/flying-hero.png" alt="flying hero">
@@ -1162,7 +1159,7 @@ Here's a conforming example
 
 ```html
 <figure>
-  <img src="generated/images/guide/docs-style-guide/flying-hero.png"
+  <img src="generated/images/guide/docs-style-guide/flying-hero.png" 
        alt="flying hero">
 </figure>
 ```
@@ -1182,13 +1179,13 @@ Here's the "flying hero" at a more reasonable scale.
 ```html
 
 <figure>
- <img src="generated/images/guide/docs-style-guide/flying-hero.png"
-   alt="flying Angular hero"
+ <img src="generated/images/guide/docs-style-guide/flying-hero.png" 
+   alt="flying Angular hero" 
    width="200">
 </figure>
 ```
 
-Wide images can be a problem. Most browsers try to rescale the image but wide images may overflow the document in certain viewports.
+Wide images can be a problem. Most browsers try to rescale the image but wide images may overflow the document in certain viewports. 
 
 **Do not set a width greater than 700px**. If you wish to display a larger image, provide a link to the actual image that the user can click on to see the full size image separately as in this example of `source-map-explorer` output from the "Ahead-of-time Compilation" guide:
 
@@ -1207,11 +1204,11 @@ Consider using an image compression web site such as [tinypng](https://tinypng.c
 
 You can float the image to the left or right of text by applying the class="left" or class="right" attributes respectively.
 
-<img src="generated/images/guide/docs-style-guide/flying-hero.png"
-   alt="flying Angular hero"
+<img src="generated/images/guide/docs-style-guide/flying-hero.png" 
+   alt="flying Angular hero" 
    width="200"
    class="left">
-
+   
 This text wraps around to the right of the floating "flying hero" image.
 
 Headings and code-examples automatically clear a floating image. If you need to force a piece of text to clear a floating image, add `<br class="clear">` where the text should break.
@@ -1221,11 +1218,11 @@ Headings and code-examples automatically clear a floating image. If you need to 
 The markup for the above example is:
 
 ```html
-<img src="generated/images/guide/docs-style-guide/flying-hero.png"
-   alt="flying Angular hero"
+<img src="generated/images/guide/docs-style-guide/flying-hero.png" 
+   alt="flying Angular hero" 
    width="200"
    class="left">
-
+   
 This text wraps around to the right of the floating "flying hero" image.
 
 Headings and code-examples automatically clear a floating image. If you need to force a piece of text to clear a floating image, add `<br class="clear">` where the text should break.
@@ -1241,8 +1238,8 @@ If you have a floating image inside an alert, callout, or a subsection, it is a 
 
 <div class="l-sub-section clear-fix">
 
-  <img src="generated/images/guide/docs-style-guide/flying-hero.png"
-    alt="flying Angular hero"
+  <img src="generated/images/guide/docs-style-guide/flying-hero.png" 
+    alt="flying Angular hero" 
     width="100"
     class="right">
 
@@ -1253,11 +1250,11 @@ If you have a floating image inside an alert, callout, or a subsection, it is a 
 ```html
 <div class="l-sub-section clear-fix">
 
-  <img src="generated/images/guide/docs-style-guide/flying-hero.png"
-    alt="flying Angular hero"
+  <img src="generated/images/guide/docs-style-guide/flying-hero.png" 
+    alt="flying Angular hero" 
     width="100"
     class="right">
-
+    
   A subsection with **markdown** formatted text.
 
 </div>
