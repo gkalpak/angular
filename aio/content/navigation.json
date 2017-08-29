@@ -357,8 +357,8 @@
             },
             {
               "url": "guide/upgrade-lazy",
-              "title": "Lazy-loading Angular into AngularJS",
-              "tooltip": "Upgrade from AngularJS to Angular in a more flexible way."
+              "title": "Hybrid Angular/AngularJS Apps",
+              "tooltip": "Upgrade from AngularJS to Angular in a flexible way."
             },
             {
               "url": "guide/ajs-quick-reference",
