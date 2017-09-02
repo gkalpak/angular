@@ -193,9 +193,10 @@ seamlessly. That means you don't have to do the upgrade work all at once,
 since there's a natural coexistence between the two frameworks during the
 transition period.
 
-### How ngUpgrade Works
+### How `ngUpgrade` works
 
-One of the primary tools provided by ngUpgrade is called the `UpgradeModule`.
+One of the promary tools that `ngUpgrade` provides is called
+the `UpgradeModule`.
 This is a module that contains utilities for bootstrapping and managing hybrid
 applications that support both Angular and AngularJS code.
 
@@ -569,7 +570,7 @@ So, you can write an Angular component and then use it from AngularJS
 code. This is useful when you start to migrate from lower-level
 components and work your way up. But in some cases it is more convenient
 to do things in the opposite order: To start with higher-level components
-and work your way down. This too can be done using the `upgrade/static`.
+and work your way down. This too can be done using `upgrade/static`.
 You can *upgrade* AngularJS component directives and then use them from
 Angular.
 
