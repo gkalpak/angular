@@ -1,6 +1,6 @@
 # Authors Style Guide
 
-This page presents design and layout guidelines for Angular documentation pages.  These guidelines should be followed by all guide page authors. Deviations must be approved by the documentation editor.
+This page presents design and layout guidelines for Angular documentation pages.  These guidelines should be followed by all guide page authors. Deviations must be approved by Jennifer Fell.
 
 Most guide pages should have [accompanying sample code](#from-code-samples) with
 [special markup](#source-code-markup) for the code snippets on the page.
