@@ -8,8 +8,8 @@ Code samples should adhere to the
 [style guide for Angular applications](guide/styleguide "Application Code Style Guide")
 because readers expect consistency.
 
-For clarity and precision, every guideline on _this_ page is illustrated with a working example,
-followed by the page markup for that example ... as shown here.
+For clarity and precision, every guideline on this page is illustrated with a working example,
+followed by the page markup for that example, as shown here.
 
 ```html
   followed by the page markup for that example ... as shown here.
