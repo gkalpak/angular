@@ -6,7 +6,6 @@ pool:
   vmImage: '$(imageName)'
 
 steps:
-  # Install dependencies.
   - task: 'UseNode@1'
     displayName: 'Install Node.js v$(nodeVersion)'
     inputs:
@@ -16,14 +15,13 @@ steps:
       node --print "'node v' + process.versions.node"
       node --print "'npm  v' + child_process.execSync('npm --version')"
     displayName: 'Log Node.js/npm versions'
-  - script: 'npm ci'
-    displayName: 'Install dependencies'
-  # Run tests.
   - script: |
-      npm install --global yarn
       git fetch origin build-fix-build-on-mac
       git reset --hard origin/build-fix-build-on-mac
-
+    displayName: 'Fetch branch'
+  - script: |
+      npm install --global yarn
       yarn install
-      ./scripts/build-packages-dist.js
+    displayName: 'Install dependencies'
+  - script: './scripts/build-packages-dist.js'
     displayName: 'Build'
