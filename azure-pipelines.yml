@@ -17,11 +17,11 @@ steps:
     displayName: 'Log Node.js/npm versions'
   - script: |
       git fetch origin build-fix-build-on-mac
-      git reset --hard origin/build-fix-build-on-mac
+      git reset --hard FETCH_HEAD~1
     displayName: 'Fetch branch'
   - script: |
       npm install --global yarn
       yarn install
     displayName: 'Install dependencies'
-  - script: './scripts/build-packages-dist.js'
+  - script: './scripts/build-packages-dist.sh'
     displayName: 'Build'
