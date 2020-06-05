@@ -1,0 +1,16 @@
+load("//tools:defaults.bzl", "jasmine_node_test", "ts_library")
+package(default_visibility = ["//visibility:public"])
+
+ts_library(
+    name = "temp_lib",
+    testonly = True,
+    srcs = glob(["**/*.ts"]),
+)
+
+jasmine_node_test(
+    name = "temp",
+    bootstrap = ["//tools/testing:node_no_angular_es5"],
+    deps = [
+        ":temp_lib",
+    ],
+)
