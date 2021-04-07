@@ -117,15 +117,25 @@ describe('deploy-to-firebase:', () => {
       {
         deployEnv: 'stable',
         projectId: 'angular-io',
-        siteId: 'v4-angular-io-site',
+        siteId: 'stable-angular-io-site',
         deployedUrl: 'https://angular.io/',
         preDeployActions: ['function:build', 'function:checkPayloadSize'],
         postDeployActions: ['function:testPwaScore'],
+      },
+      {
+        deployEnv: 'stable',
+        projectId: 'angular-io',
+        siteId: 'v4-angular-io-site',
+        deployedUrl: 'https://v4.angular.io/',
+        preDeployActions: [],
+        postDeployActions: ['function:testRedirectToStable'],
       },
     ]);
   });
 
   it('stable - deploy success - no active RC', () => {
+    const majorVersion = computeMajorVersion(mostRecentMinorBranch);
+
     expect(getDeploymentsInfoFor({
       CI_REPO_OWNER: 'angular',
       CI_REPO_NAME: 'angular',
@@ -137,10 +147,18 @@ describe('deploy-to-firebase:', () => {
       {
         deployEnv: 'stable',
         projectId: 'angular-io',
-        siteId: `v${computeMajorVersion(mostRecentMinorBranch)}-angular-io-site`,
+        siteId: 'stable-angular-io-site',
         deployedUrl: 'https://angular.io/',
         preDeployActions: ['function:build', 'function:checkPayloadSize'],
         postDeployActions: ['function:testPwaScore'],
+      },
+      {
+        deployEnv: 'stable',
+        projectId: 'angular-io',
+        siteId: `v${majorVersion}-angular-io-site`,
+        deployedUrl: `https://v${majorVersion}.angular.io/`,
+        preDeployActions: [],
+        postDeployActions: ['function:testRedirectToStable'],
       },
       {
         deployEnv: 'stable',

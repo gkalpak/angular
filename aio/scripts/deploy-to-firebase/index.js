@@ -118,15 +118,23 @@ function computeDeploymentsInfo(
     stable: {
       deployEnv: 'stable',
       projectId: 'angular-io',
-      siteId: `v${currentBranchMajorVersion}-angular-io-site`,
+      siteId: 'stable-angular-io-site',
       deployedUrl: 'https://angular.io/',
       preDeployActions: [build, checkPayloadSize],
       postDeployActions: [testPwaScore],
     },
+    stableVersionSubdomain: {
+      deployEnv: 'stable',
+      projectId: 'angular-io',
+      siteId: `v${currentBranchMajorVersion}-angular-io-site`,
+      deployedUrl: `https://v${currentBranchMajorVersion}.angular.io/`,
+      preDeployActions: [],
+      postDeployActions: [testRedirectToStable],
+    },
     // Config for deploying the stable build to the RC Firebase site when there is no active RC.
     // See https://github.com/angular/angular/issues/39760 for more info on the purpose of this
     // special deployment.
-    noActiveRc: {
+    stableNoActiveRc: {
       deployEnv: 'stable',
       projectId: 'angular-io',
       siteId: 'rc-angular-io-site',
@@ -162,15 +170,19 @@ function computeDeploymentsInfo(
   // If the current branch is the stable branch, deploy as `stable`.
   if (currentBranch === stableBranch) {
     return (rcBranch !== null) ?
-      // There is an active RC version. Only deploy to the `stable` project/site.
-      [deploymentInfoPerTarget.stable] :
-      // There is no active RC version. In addition to deploying to the `stable` project/site,
+      // There is an active RC version. Only deploy to the `stable` projects/sites.
+      [
+        deploymentInfoPerTarget.stable,
+        deploymentInfoPerTarget.stableVersionSubdomain,
+      ] :
+      // There is no active RC version. In addition to deploying to the `stable` projects/sites,
       // deploy to `rc` to ensure it redirects to `stable`.
       // See https://github.com/angular/angular/issues/39760 for more info on the purpose of this
       // special deployment.
       [
         deploymentInfoPerTarget.stable,
-        deploymentInfoPerTarget.noActiveRc,
+        deploymentInfoPerTarget.stableVersionSubdomain,
+        deploymentInfoPerTarget.stableNoActiveRc,
       ];
   }
 
@@ -364,6 +376,52 @@ function testNoActiveRcDeployment({deployedUrl}) {
 function testPwaScore({deployedUrl, minPwaScore}) {
   console.log('\n\n\n==== Run PWA-score tests. ====\n');
   yarn(`test-pwa-score "${deployedUrl}" "${minPwaScore}"`);
+}
+
+function testRedirectToStable({deployedUrl}) {
+  const deployedOrigin = deployedUrl.replace(/\/$/, '');
+
+  // Ensure a request for `ngsw.json` is redirected to `https://angular.io/ngsw.json`.
+  const ngswJsonUrl = `${deployedOrigin}/ngsw.json`;
+  const ngswJsonScript =
+      `https.get('${ngswJsonUrl}', res => console.log(res.statusCode, res.headers.location))`;
+  const [ngswJsonActualStatusCode, ngswJsonActualRedirectUrl] =
+      exec(`node --eval "${ngswJsonScript}"`, {silent: true}).trim().split(' ');
+  const ngswJsonExpectedStatusCode = '302';
+  const ngswJsonExpectedRedirectUrl = 'https://angular.io/ngsw.json';
+
+  if (ngswJsonActualStatusCode !== ngswJsonExpectedStatusCode) {
+    throw new Error(
+        `Expected '${ngswJsonUrl}' to return a status code of '${ngswJsonExpectedStatusCode}', ` +
+        `but it returned '${ngswJsonActualStatusCode}'.`);
+  } else if (ngswJsonActualRedirectUrl !== ngswJsonExpectedRedirectUrl) {
+    const actualBehavior = (ngswJsonActualRedirectUrl === 'undefined') ?
+      'not redirected' : `redirected to '${ngswJsonActualRedirectUrl}'`;
+    throw new Error(
+        `Expected '${ngswJsonUrl}' to be redirected to '${ngswJsonExpectedRedirectUrl}', but it ` +
+        `was ${actualBehavior}.`);
+  }
+
+  // Ensure a request for `foo/bar` is redirected to `https://angular.io/foo/bar`.
+  const fooBarUrl = `${deployedOrigin}/foo/bar?baz=qux`;
+  const fooBarScript =
+      `https.get('${fooBarUrl}', res => console.log(res.statusCode, res.headers.location))`;
+  const [fooBarActualStatusCode, fooBarActualRedirectUrl] =
+      exec(`node --eval "${fooBarScript}"`, {silent: true}).trim().split(' ');
+  const fooBarExpectedStatusCode = '302';
+  const fooBarExpectedRedirectUrl = 'https://angular.io/foo/bar?baz=qux';
+
+  if (fooBarActualStatusCode !== fooBarExpectedStatusCode) {
+    throw new Error(
+        `Expected '${fooBarUrl}' to return a status code of '${fooBarExpectedStatusCode}', but ` +
+        `it returned '${fooBarActualStatusCode}'.`);
+  } else if (fooBarActualRedirectUrl !== fooBarExpectedRedirectUrl) {
+    const actualBehavior = (fooBarActualRedirectUrl === 'undefined') ?
+      'not redirected' : `redirected to '${fooBarActualRedirectUrl}'`;
+    throw new Error(
+        `Expected '${fooBarUrl}' to be redirected to '${fooBarExpectedRedirectUrl}', but it was ` +
+        `${actualBehavior}.`);
+  }
 }
 
 function yarn(cmd) {
